@@ -1,0 +1,117 @@
+/*scrollbar*/
+html {
+  scrollbar-width: none;
+}
+
+#root {
+  --off-white:rgb(235, 235, 235);
+  min-height: 100vh; /* prevents layout shift on react load */
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  interpolate-size: allow-keywords;
+}
+body {
+  background: repeating-linear-gradient(
+    69deg,
+    rgb(120,120,120),
+    rgb(40,40,40),
+    rgb(120,120,120)
+  );
+  background-attachment: fixed;
+}
+p {
+  font-family: Garamond, serif
+}
+h1, h2 {
+  font-family: Helvetica
+}
+
+
+
+
+/*Hero section*/
+@scope (header#intro) {
+  /*Page header (Title and personal info)*/
+  p {
+    margin-inline: auto;
+  }
+}
+
+/*Projects*/
+/***********Category sections of projects**************/
+@scope (section) {
+  :scope {
+    margin-block: .1rem;
+  }
+  /*Collapsed*/
+  /*Drop down arrow*/
+  .arrow {
+    --arrow-size: 2rem;
+    --arrow-stroke-thickness: 5px;
+    border: solid var(--off-white);
+    width: var(--arrow-size);
+    height: var(--arrow-size);
+    border-width: 0 var(--arrow-stroke-thickness) var(--arrow-stroke-thickness) 0;
+    display: inline-block;
+    padding: 3px;
+    transition: all 0.5s;
+    margin-inline: 2rem;
+  }
+  .arrow.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  h2 {
+    font-size: 2.4rem;
+    width: fit-content;
+    padding-inline: 1rem;
+    margin-block: 0.45rem;
+    margin-inline: auto;
+    background: rgba(0, 0, 0, 0.02);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(205,205,205,0.55);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur( 1.5px );
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: inline-block;
+
+  }
+  :scope > div {
+    /*group of projects per category. collapsed and unseen*/
+    height: 0;
+    transition: height .5s, opacity .5s;
+    overflow: clip;
+    opacity: 0;
+    padding: 0.5rem;
+  }
+  
+}
+/*Expanded*/
+@scope (section.projects__category--expanded) {
+  :scope {
+    margin-inline: auto;
+    border-radius: 16px;
+    /* outline: 2px ridge var(--off-white); */
+  }
+  /*Drop down arrow*/
+  .arrow.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  h2 {
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  :scope.projects__category--expanded > div {
+  /*group of projects per category. expanded*/
+  height: auto;
+  opacity: 1;
+  }
+}
+
+/*Project components*/
+
