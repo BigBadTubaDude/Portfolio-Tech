@@ -38,6 +38,29 @@ h1, h2 {
     margin-inline: auto;
   }
 }
+/* Filter Nav */
+@scope(main > header) {
+  button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  button.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+  }
+}
 
 /*Projects*/
 /***********Category sections of projects**************/
@@ -114,4 +137,3 @@ h1, h2 {
 }
 
 /*Project components*/
-
