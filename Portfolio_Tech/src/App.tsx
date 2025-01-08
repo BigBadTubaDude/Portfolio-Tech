@@ -14,9 +14,6 @@ function App() {
                 <h1>Programming Portfolio</h1>
                 <p id="nameInfo">Name: Coleman Alexander</p>
                 <p id="emailInfo">Email: Bigbadtubadude@gmail.com</p>
-                <p id="phoneInfo" className="rightInfo">
-                    Phone: 864-633-9727
-                </p>
                 <p id="jobinfo" className="rightInfo">
                     Title: Automation Engineer
                 </p>

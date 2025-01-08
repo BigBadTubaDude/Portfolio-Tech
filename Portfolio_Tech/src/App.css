@@ -22,10 +22,10 @@ body {
   background-attachment: fixed;
 }
 p {
-  font-family: Garamond, serif
+  font-family: 'Verdana' , serif
 }
 h1, h2 {
-  font-family: Helvetica
+  font-family: 'Georgia', sans-serif;
 }
 
 
@@ -40,24 +40,40 @@ h1, h2 {
 }
 /* Filter Nav */
 @scope(main > header) {
+  :scope {
+    margin-top: 1rem;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+  }
+  h2 {
+    margin-bottom: 0.7rem;
+    font-size: 1.5rem;
+  }
   button {
     padding: 8px 12px;
     margin: 5px;
     border: 1px solid #ccc;
-    background-color: white;
-    color: #333;
+    background-color: rgb(0,0,0,0.2);
+    color: var(--off-white);
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
   }
   
-  button:hover {
-    background-color: #f0f0f0;
+  button:active {
+    filter: opacity(0.1);
+    border-color: grey;
   }
-  
+  button:hover {
+    filter: brightness(1.1);
+    border-color: white;
+  }
   button.selected {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--off-white);
+    color: black;
     border-color: #0056b3;
   }
 }
@@ -68,24 +84,7 @@ h1, h2 {
   :scope {
     margin-block: .1rem;
   }
-  /*Collapsed*/
-  /*Drop down arrow*/
-  .arrow {
-    --arrow-size: 2rem;
-    --arrow-stroke-thickness: 5px;
-    border: solid var(--off-white);
-    width: var(--arrow-size);
-    height: var(--arrow-size);
-    border-width: 0 var(--arrow-stroke-thickness) var(--arrow-stroke-thickness) 0;
-    display: inline-block;
-    padding: 3px;
-    transition: all 0.5s;
-    margin-inline: 2rem;
-  }
-  .arrow.down {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-  }
+
   h2 {
     font-size: 2.4rem;
     width: fit-content;
@@ -118,11 +117,6 @@ h1, h2 {
     margin-inline: auto;
     border-radius: 16px;
     /* outline: 2px ridge var(--off-white); */
-  }
-  /*Drop down arrow*/
-  .arrow.up {
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
   }
   h2 {
     border-radius: 15px;
