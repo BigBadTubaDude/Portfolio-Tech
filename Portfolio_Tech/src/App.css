@@ -145,8 +145,22 @@ h1, h2 {
   }
 }
 @scope (footer.project__summary) {
-  ul, ul li {
+  :scope {
+    width: fit-content;
+    margin-inline: auto;
     display: inline-block;
-    
+  }
+  p {
+
+    vertical-align: middle;
+  }
+  img {
+    display: inline-block;
+    vertical-align: center;
+    width: 1.9rem;
+
+  }
+  img:nth-child(odd) {
+    float: left;
   }
 }
