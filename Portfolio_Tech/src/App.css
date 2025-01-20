@@ -116,7 +116,6 @@ h1, h2 {
   :scope {
     margin-inline: auto;
     border-radius: 16px;
-    /* outline: 2px ridge var(--off-white); */
   }
   h2 {
     border-radius: 15px;
@@ -131,3 +130,23 @@ h1, h2 {
 }
 
 /*Project components*/
+@scope (section > div > article) {
+  :scope:not(:last-of-type) {
+    margin-block-end: 1.3rem;
+  }
+  :scope:not(:last-of-type)::after {
+    content: "";
+    width: 55%;
+    height: 1px;
+    background-color: rgb(255,225,255,0.1);
+    margin-block: 0.4rem;
+    margin-inline: auto;
+    display: block;
+  }
+}
+@scope (footer.project__summary) {
+  ul, ul li {
+    display: inline-block;
+    
+  }
+}
