@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { usePortfolioEntries} from '../hooks/fetchHooks/usePortfolioEntries'
 import { ProjectEntry, ProjectAssetCleaned, DemoMedia } from '../types';
+import { ProjectSummary } from './ProjectSummary'; 
 export function Project({entry}: {entry:ProjectEntry}) {
     const [isExpanded, setIsExpanded] = useState(false)
     function toggleExpandProject() {
@@ -29,6 +30,7 @@ export function Project({entry}: {entry:ProjectEntry}) {
                   src={asset.file.url} 
                 />
             )) : null}
+            <ProjectSummary project={entry}/>
         </article>
     );
 }
