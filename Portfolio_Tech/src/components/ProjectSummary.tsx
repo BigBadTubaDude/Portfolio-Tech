@@ -6,7 +6,6 @@ export function ProjectSummary({ project }: { project: ProjectEntry }) {
     const monthWorkedOn = dateWorkedOn.toLocaleString('default', { month: 'long' });
 
     const skillsUsed = project.skillsUsed.sort((a: string, b: string) => a.localeCompare(b)) || []
-    console.log(project)
     return (
         <footer className="project__summary">
             <p>{`${monthWorkedOn} ${yearWorkedOn}`}</p>

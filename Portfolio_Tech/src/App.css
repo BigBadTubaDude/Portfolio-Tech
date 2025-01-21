@@ -143,6 +143,16 @@ h1, h2 {
     margin-inline: auto;
     display: block;
   }
+  @scope (div.project__body ) {
+    :scope {
+      height: 0;
+      overflow: hidden;
+      transition: height 1s;
+    }
+    :scope.project__body--expanded {
+      height: auto;
+    }
+  }
 }
 @scope (footer.project__summary) {
   :scope {
@@ -151,13 +161,15 @@ h1, h2 {
     display: inline-block;
   }
   p {
-
+    display: inline;
     vertical-align: middle;
   }
   img {
     display: inline-block;
     vertical-align: center;
-    width: 1.9rem;
+    margin-inline: 0.3rem;
+    float: right;
+    width: 1.8rem;
 
   }
   img:nth-child(odd) {

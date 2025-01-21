@@ -24,12 +24,13 @@ export function Project({entry}: {entry:ProjectEntry}) {
             toggleExpandProject()
         }}>
             <header>{entry.projectName}</header>
-            {isExpanded ? demoMediaAssets?.map((asset: ProjectAssetCleaned) => (
-                <img 
-                  key={asset.id} 
-                  src={asset.file.url} 
-                />
-            )) : null}
+            <div className={`project__body ${isExpanded ? "project__body--expanded" : ""}`}>
+            {demoMediaAssets?.map((asset: ProjectAssetCleaned) => (            <img 
+              key={asset.id} 
+              src={asset.file.url} 
+            />
+            ))}
+            </div>
             <ProjectSummary project={entry}/>
         </article>
     );
