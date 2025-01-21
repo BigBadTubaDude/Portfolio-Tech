@@ -136,7 +136,7 @@ h1, h2 {
   }
   :scope:not(:last-of-type)::after {
     content: "";
-    width: 55%;
+    width: clamp(150px, 55%, 400px);
     height: 1px;
     background-color: rgb(255,225,255,0.1);
     margin-block: 0.4rem;
