@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { usePortfolioEntries} from '../hooks/fetchHooks/usePortfolioEntries'
 import { ProjectEntry, ProjectAssetCleaned, DemoMedia } from '../types';
+import { ProjectSummary } from './ProjectSummary'; 
 export function Project({entry}: {entry:ProjectEntry}) {
     const [isExpanded, setIsExpanded] = useState(false)
     function toggleExpandProject() {
@@ -23,12 +24,14 @@ export function Project({entry}: {entry:ProjectEntry}) {
             toggleExpandProject()
         }}>
             <header>{entry.projectName}</header>
-            {isExpanded ? demoMediaAssets?.map((asset: ProjectAssetCleaned) => (
-                <img 
-                  key={asset.id} 
-                  src={asset.file.url} 
-                />
-            )) : null}
+            <div className={`project__body ${isExpanded ? "project__body--expanded" : ""}`}>
+            {demoMediaAssets?.map((asset: ProjectAssetCleaned) => (            <img 
+              key={asset.id} 
+              src={asset.file.url} 
+            />
+            ))}
+            </div>
+            <ProjectSummary project={entry}/>
         </article>
     );
 }
