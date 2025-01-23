@@ -8,7 +8,7 @@ html {
   min-height: 100vh; /* prevents layout shift on react load */
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   interpolate-size: allow-keywords;
 }
@@ -164,6 +164,23 @@ h1, h2 {
     }
     :scope.project__body--expanded {
       height: auto;
+    }
+
+    .project__body__images {
+      display: flex;
+      width: 100%;
+      overflow-x: scroll;
+      gap: 15px;
+    }
+    .project__body__images::-webkit-scrollbar {
+      width: 0px;
+    }
+    img {
+      flex-shrink: 0;
+      flex-grow: 1;
+      border-radius: 8px;
+      min-width: 300px;
+      
     }
   }
 }

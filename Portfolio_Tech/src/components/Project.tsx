@@ -1,17 +1,21 @@
 import { useState } from 'react';
-import { usePortfolioEntries} from '../hooks/fetchHooks/usePortfolioEntries'
+import { usePortfolioEntries } from '../hooks/fetchHooks/usePortfolioEntries'
 import { ProjectEntry, ProjectAssetCleaned, DemoMedia } from '../types';
-import { ProjectSummary } from './ProjectSummary'; 
-export function Project({entry}: {entry:ProjectEntry}) {
+import { ProjectSummary } from './ProjectSummary';
+import { Image } from 'antd';
+export function Project({ entry }: { entry: ProjectEntry }) {
     const [isExpanded, setIsExpanded] = useState(false)
-    function toggleExpandProject() {
-        setIsExpanded(old => !old)
+    function expandProject() {
+        setIsExpanded(true)
     }
+    // function colapseProject() {
+    //     setIsExpanded(false)
+    // }
     const { data: portfolioEntries } = usePortfolioEntries();
     // Get ids of assets associated with this project
     const demoMediaAssetIDs = entry.demoMedia?.map(
-        (media : DemoMedia) => {
-          return media.sys.id
+        (media: DemoMedia) => {
+            return media.sys.id
         }
     );
     // Use asset ids to get assets
@@ -21,17 +25,21 @@ export function Project({entry}: {entry:ProjectEntry}) {
     return (
         <article onClick={event => {
             event.stopPropagation()
-            toggleExpandProject()
+            expandProject()
         }}>
             <header>{entry.projectName}</header>
             <div className={`project__body ${isExpanded ? "project__body--expanded" : ""}`}>
-            {demoMediaAssets?.map((asset: ProjectAssetCleaned) => (            <img 
-              key={asset.id} 
-              src={asset.file.url} 
-            />
-            ))}
+                <div className='project__body__images'>
+                    {demoMediaAssets?.map((asset: ProjectAssetCleaned) => (
+                        <Image
+                        key={asset.id}
+                        src={asset.file.url}
+                        />                        
+                    ))}
+                    </div>
+
             </div>
-            <ProjectSummary project={entry}/>
+            <ProjectSummary project={entry} />
         </article>
     );
 }
