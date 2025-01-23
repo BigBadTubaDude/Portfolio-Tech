@@ -131,6 +131,12 @@ h1, h2 {
 
 /*Project components*/
 @scope (section > div > article) {
+  :scope {
+    cursor: cell;
+  }
+  :scope:has(div.project__body--expanded) {
+    cursor: pointer;
+  }
   :scope:not(:last-of-type) {
     margin-block-end: 1.3rem;
   }
