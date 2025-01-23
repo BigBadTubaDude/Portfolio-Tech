@@ -150,37 +150,21 @@ h1, h2 {
     display: block;
   }
   header {
-    font-size: 1.25rem;
+    font-size: 1.65rem;
     transition: font-size 1s;
   }
   :scope:has(div.project__body--expanded) header {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
   }
   @scope (div.project__body ) {
     :scope {
       height: 0;
       overflow: hidden;
-      transition: height 1s;
+      transition: all 1s;
     }
     :scope.project__body--expanded {
       height: auto;
-    }
-
-    .project__body__images {
-      display: flex;
-      width: 100%;
-      overflow-x: scroll;
-      gap: 15px;
-    }
-    .project__body__images::-webkit-scrollbar {
-      width: 0px;
-    }
-    img {
-      flex-shrink: 0;
-      flex-grow: 1;
-      border-radius: 8px;
-      min-width: 300px;
-      
+      margin-block: 0.5rem;
     }
   }
 }
