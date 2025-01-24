@@ -9,9 +9,12 @@ export function Project({ entry }: { entry: ProjectEntry }) {
     function expandProject() {
         setIsExpanded(true)
     }
-    // function colapseProject() {
-    //     setIsExpanded(false)
-    // }
+    function collapseProject() {
+        setIsExpanded(false)
+    }
+    function toggleExpandProject() {
+        setIsExpanded(old => !old)
+    }
     function DisplayDescriptionContent( {node} : { node: ContentNode}) {
         if (node?.nodeType === "paragraph") {
             return <p>
@@ -34,13 +37,15 @@ export function Project({ entry }: { entry: ProjectEntry }) {
     const demoMediaAssets = portfolioEntries?.assets.filter(
         (asset: ProjectAssetCleaned) => demoMediaAssetIDs?.includes(asset.id)
     );
-    console.log(entry)
     return (
         <article onClick={event => {
             event.stopPropagation()
             expandProject()
         }}>
-            <header>{entry.projectName}</header>
+            <header onClick={event => {
+                event.stopPropagation() 
+                toggleExpandProject()
+            }}>{entry.projectName}</header>
             <div className={`project__body ${isExpanded ? "project__body--expanded" : ""}`}>
                 <div className='project__body__text'>
                     {entry?.projectDescription?.content?.map((contentNode: ContentNode, index: number) => <DisplayDescriptionContent node={contentNode} key={index}/>)}
