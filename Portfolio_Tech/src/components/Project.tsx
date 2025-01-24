@@ -9,9 +9,9 @@ export function Project({ entry }: { entry: ProjectEntry }) {
     function expandProject() {
         setIsExpanded(true)
     }
-    function collapseProject() {
-        setIsExpanded(false)
-    }
+    // function collapseProject() {
+    //     setIsExpanded(false)
+    // }
     function toggleExpandProject() {
         setIsExpanded(old => !old)
     }
@@ -37,6 +37,9 @@ export function Project({ entry }: { entry: ProjectEntry }) {
     const demoMediaAssets = portfolioEntries?.assets.filter(
         (asset: ProjectAssetCleaned) => demoMediaAssetIDs?.includes(asset.id)
     );
+    console.log(entry)
+    const tryItOutText = !!entry?.demoLink ? <p>Try it out <a href={entry.demoLink}>here</a></p> : null
+    const checkoutGitHubText = !!entry?.gitHubRepoLink ? <p>Checkout the <a href={entry.gitHubRepoLink}>github</a></p> : null
     return (
         <article onClick={event => {
             event.stopPropagation()
@@ -49,15 +52,18 @@ export function Project({ entry }: { entry: ProjectEntry }) {
             <div className={`project__body ${isExpanded ? "project__body--expanded" : ""}`}>
                 <div className='project__body__text'>
                     {entry?.projectDescription?.content?.map((contentNode: ContentNode, index: number) => <DisplayDescriptionContent node={contentNode} key={index}/>)}
+                    {tryItOutText}
+                    {checkoutGitHubText}
                 </div>
                 <div className='project__body__images'>
                     <Carousel autoplay>
-                        {demoMediaAssets?.map((asset: ProjectAssetCleaned) => (
+                        {demoMediaAssets?.map((asset: ProjectAssetCleaned) => {
+                            return (
                             <Image
                                 key={asset.id}
                                 src={asset.file.url}
                             />
-                        ))}
+                        )})}
                     </Carousel>
                 </div>
 

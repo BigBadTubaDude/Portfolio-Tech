@@ -33,6 +33,8 @@ export interface ContentNode {
     },
     "languageLibraries":  Record<string, string>,
     "demoMedia": DemoMedia[],
+    "demoLink"?: string,
+    "gitHubRepoLink"?: string,
     "dateRangeStart": string,
     "publishedDate" : string,
     tags?: string[],
