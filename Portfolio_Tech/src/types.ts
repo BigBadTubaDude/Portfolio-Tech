@@ -11,7 +11,17 @@ export interface CategoryProps {
 }
 type Skill = 'Python' | 'JavaScript' | 'TypeScript' | 'HTML' | 'CSS' | 'React' | 'DAX' | 'Power Query' | 'SQL' | 'Power BI' | 'Power Automate' | 'MS SQL Server' | 'Canvas (JS)'
 export type SkillIcon = Record<Skill, string>;
-export interface ProjectEntry {
+export interface ContentNode {
+        nodeType: string;
+        content: { value: string }[];
+        data?: {
+            target?: {
+                sys?: {
+                    id: string
+                }
+            }
+        }
+    }export interface ProjectEntry {
     "id": string,
     "projectName": string,
     "isDisplay": boolean,
@@ -19,7 +29,7 @@ export interface ProjectEntry {
     "projectDescription": {
         "nodeType": string,
         "data": Record<string, unknown>,
-        "content": Record<string, unknown>[]
+        "content": ContentNode[]
     },
     "languageLibraries":  Record<string, string>,
     "demoMedia": DemoMedia[],
