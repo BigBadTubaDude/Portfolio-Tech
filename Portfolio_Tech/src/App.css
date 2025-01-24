@@ -167,6 +167,10 @@ h1, h2 {
       margin-block: 0.5rem;
     }
   }
+ div.project__body__text {
+    display: flex;
+    justify-content: center;
+  }
 }
 @scope (footer.project__summary) {
   :scope {
