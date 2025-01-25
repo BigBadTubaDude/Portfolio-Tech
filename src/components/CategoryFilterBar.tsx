@@ -13,7 +13,7 @@ export function CategoryFilterBar({
 
     return (
         <header>
-                <h2>Please select a category</h2>
+                <h2>{!portfolioEntries ? "Getting Categories..." : "Please select a category"}</h2>
             <nav>
                 {
                     projectCategories.map(category => {
