@@ -82,7 +82,9 @@ h1, h2 {
 /***********Category sections of projects**************/
 @scope (section) {
   :scope {
-    margin-block: .1rem;
+    margin-block: .1rem;    
+    display: flex;
+    flex-direction: column;
   }
 
   h2 {
@@ -107,7 +109,7 @@ h1, h2 {
     transition: height .5s, opacity .5s;
     overflow: clip;
     opacity: 0;
-    padding: 0.5rem;
+    padding: 0.5rem;    
   }
   
 }
@@ -115,7 +117,7 @@ h1, h2 {
 @scope (section.projects__category--expanded) {
   :scope {
     margin-inline: auto;
-    border-radius: 16px;
+    border-radius: 16px;    
   }
   h2 {
     border-radius: 15px;
@@ -132,10 +134,16 @@ h1, h2 {
 /*Project components*/
 @scope (section > div > article) {
   :scope {
-    cursor: cell;
+    border: 1px solid rgb(255,255,255,0.01);
+    transition: all 1s;
+    border-radius: 8px;
+    /* width: fit-content; */
+    cursor: pointer;
   }
   :scope:has(div.project__body--expanded) {
-    cursor: pointer;
+    cursor: default;
+    border: 1px solid rgb(255,255,255,0.5);
+    background-color: rgb(255,255,255,0.15);
   }
   :scope:not(:last-of-type) {
     margin-block-end: 1.3rem;
@@ -152,9 +160,23 @@ h1, h2 {
   header {
     font-size: 1.65rem;
     transition: font-size 1s;
+    margin-block: 1rem;
+    width: auto;
   }
   :scope:has(div.project__body--expanded) header {
     font-size: 1.7rem;
+  }
+  button  {
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+  }
+   {
+    outline: none;
+  }
+  button:hover, button:active, button:focus, button:focus-within  {
+    outline: 1px solid rgb(0,0,0,0.1);
+    background-color: rgb(255,255,255,0.05);
   }
   @scope (div.project__body ) {
     :scope {
@@ -175,10 +197,11 @@ h1, h2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgb(0,0,0,0.15);
+    background-color: rgb(0,0,0,0.3);
     width: fit-content;
     padding-block: 0.5rem;
     padding-inline: 1.75rem;
+    margin-bottom: 0.5rem;
     align-self: center;
   }
   div.project__body__text p {
@@ -191,6 +214,7 @@ h1, h2 {
   :scope {
     width: fit-content;
     margin-inline: auto;
+    margin-block: 0.9rem;
     display: inline-block;
   }
   p {
